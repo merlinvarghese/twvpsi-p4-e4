@@ -9,7 +9,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class ParkingLotTest {
     @Test
-    void expectParkingAvailable() {
+    void expectCanParkWhenParkingAvailable() {
         Map<String, String> parkingWithEmptySpace = new HashMap<>();
         parkingWithEmptySpace.put("A11", "KA020000");
         parkingWithEmptySpace.put("A13", null);
@@ -23,15 +23,15 @@ class ParkingLotTest {
     }
 
     @Test
-    void expectParkingNotAvailable() {
-        Map<String, String> parkingWithEmptySpace = new HashMap<>();
-        parkingWithEmptySpace.put("A11", "KA020000");
-        parkingWithEmptySpace.put("A11", "KA030007");
-        parkingWithEmptySpace.put("A11", "KA039033");
-        parkingWithEmptySpace.put("A11", "KA016788");
-        parkingWithEmptySpace.put("A11", "KA019999");
+    void expectCannotParkWhenParkingFull() {
+        Map<String, String> parkingFull = new HashMap<>();
+        parkingFull.put("A11", "KA020000");
+        parkingFull.put("A11", "KA030007");
+        parkingFull.put("A11", "KA039033");
+        parkingFull.put("A11", "KA016788");
+        parkingFull.put("A11", "KA019999");
 
-        ParkingLot parking = new ParkingLot(parkingWithEmptySpace);
+        ParkingLot parking = new ParkingLot(parkingFull);
 
         assertFalse(parking.isParkingAvailable());
     }
