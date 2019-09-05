@@ -1,28 +1,28 @@
 package com.tw.vapasi;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
 //understands space to station a vehicle
 class ParkingLot {
     private int capacity;
-    private Set<Vehicle> vehicles;
+    private List<Parkable> vehicles;
 
     ParkingLot(int capacity) {
         this.capacity = capacity;
-        vehicles = new HashSet<>();
+        vehicles = new ArrayList<>();
     }
 
-    void park(Vehicle vehicle) throws CannotParkException {
+    void park(Parkable vehicle) throws CannotParkException {
         if (isParkingSlotNotAvailable()) {
             throw new CannotParkException();
         }
         vehicles.add(vehicle);
     }
 
-    void unPark(Vehicle vehicle) throws CannotUnParkException {
+    void unpark(Parkable vehicle) throws CannotUnparkException {
         if (isVehicleNotParked(vehicle)) {
-            throw new CannotUnParkException();
+            throw new CannotUnparkException();
         }
         vehicles.remove(vehicle);
     }
@@ -31,8 +31,11 @@ class ParkingLot {
         return vehicles.size() == capacity;
     }
 
-    private boolean isVehicleNotParked(Vehicle vehicle) {
+    private boolean isVehicleNotParked(Parkable vehicle) {
         return !vehicles.contains(vehicle);
     }
-}
 
+    boolean isVehicleParked(Parkable vehicle) {
+        return vehicles.contains(vehicle);
+    }
+}

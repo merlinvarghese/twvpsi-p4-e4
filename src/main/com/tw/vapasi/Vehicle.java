@@ -1,6 +1,6 @@
 package com.tw.vapasi;
 
-class Vehicle {
+class Vehicle implements Parkable {
     private String vehicleNumber;
 
     Vehicle(String vehicleNumber) {
