@@ -105,4 +105,5 @@ class ParkingLotTest {
         parking.unpark(vehicle);
         verify(owner, never()).notifyParkingAvailable();
     }
+
 }
